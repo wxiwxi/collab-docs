@@ -3,7 +3,7 @@
  *   All rights reserved.
  *   个人练习项目，作者@wxiwxi，供学习参考。
  */
-import { BlockSchema, getDefaultEmojiPickerItems, InlineContentSchema, WangxDocEditor, StyleSchema } from '@wangx-doc/core'
+import { BlockSchema, getDefaultEmojiPickerItems, InlineContentSchema, StyleSchema, WangxDocEditor } from '@wangx-doc/core'
 
 import { DefaultReactGridSuggestionItem } from './types'
 

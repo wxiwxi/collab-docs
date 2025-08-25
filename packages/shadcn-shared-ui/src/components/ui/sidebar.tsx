@@ -5,6 +5,8 @@
  */
 'use client'
 
+import { ViewVerticalIcon } from '@radix-ui/react-icons'
+import { Slot } from '@radix-ui/react-slot'
 import { Button } from '@wangx-doc/shadcn-shared-ui/components/ui/button'
 import { Input } from '@wangx-doc/shadcn-shared-ui/components/ui/input'
 import { Separator } from '@wangx-doc/shadcn-shared-ui/components/ui/separator'
@@ -13,8 +15,6 @@ import { Skeleton } from '@wangx-doc/shadcn-shared-ui/components/ui/skeleton'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@wangx-doc/shadcn-shared-ui/components/ui/tooltip'
 import { useIsMobile } from '@wangx-doc/shadcn-shared-ui/hooks/use-mobile'
 import { cn } from '@wangx-doc/shadcn-shared-ui/lib/utils'
-import { ViewVerticalIcon } from '@radix-ui/react-icons'
-import { Slot } from '@radix-ui/react-slot'
 import { cva, VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
@@ -141,7 +141,7 @@ const Sidebar = React.forwardRef<
         variant?: 'sidebar' | 'floating' | 'inset'
         collapsible?: 'offcanvas' | 'icon' | 'none'
     }
-  >(({ side = 'left', variant = 'sidebar', collapsible = 'icon', className, children, ...props }, ref) => {
+>(({ side = 'left', variant = 'sidebar', collapsible = 'icon', className, children, ...props }, ref) => {
     const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
 
     if (collapsible === 'none') {

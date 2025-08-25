@@ -3,8 +3,8 @@
  *   All rights reserved.
  *   个人练习项目，作者@wxiwxi，供学习参考。
  */
-import { addStyleAttributes, createInternalStyleSpec, getStyleParseRules, StyleConfig, stylePropsToAttributes } from '@wangx-doc/core'
 import { Mark } from '@tiptap/react'
+import { addStyleAttributes, createInternalStyleSpec, getStyleParseRules, StyleConfig, stylePropsToAttributes } from '@wangx-doc/core'
 import { FC } from 'react'
 
 import { renderToDOMSpec } from './@util/ReactRenderUtil'

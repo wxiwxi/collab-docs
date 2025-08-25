@@ -10,8 +10,8 @@ import { RiH1, RiH2, RiH3, RiListCheck3, RiListOrdered, RiListUnordered, RiText 
 
 import { ComponentProps, useComponentsContext } from '../../../editor/ComponentsContext'
 import { useEditorContentOrSelectionChange } from '../../../hooks/useEditorContentOrSelectionChange'
-import { useWangxDocEditor } from '../../../hooks/useWangxDocEditor'
 import { useSelectedBlocks } from '../../../hooks/useSelectedBlocks'
+import { useWangxDocEditor } from '../../../hooks/useWangxDocEditor'
 import { useDictionary } from '../../../i18n/dictionary'
 
 export type BlockTypeSelectItem = {

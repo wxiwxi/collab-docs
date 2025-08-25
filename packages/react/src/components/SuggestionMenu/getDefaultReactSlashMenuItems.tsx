@@ -3,7 +3,7 @@
  *   All rights reserved.
  *   个人练习项目，作者@wxiwxi，供学习参考。
  */
-import { BlockSchema, getDefaultSlashMenuItems, InlineContentSchema, WangxDocEditor, StyleSchema } from '@wangx-doc/core'
+import { BlockSchema, getDefaultSlashMenuItems, InlineContentSchema, StyleSchema, WangxDocEditor } from '@wangx-doc/core'
 import {
     RiCodeBlock,
     RiEmotionFill,

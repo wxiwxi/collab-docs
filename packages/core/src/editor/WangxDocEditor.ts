@@ -45,20 +45,20 @@ import {
     BlockSpecs,
     InlineContentSchema,
     InlineContentSpecs,
-    WangxDocDOMAttributes,
     PartialInlineContent,
     Styles,
     StyleSchema,
     StyleSpecs,
+    WangxDocDOMAttributes,
 } from '../schema/index'
 import { mergeCSSClasses } from '../util/browser'
 import { NoInfer, UnreachableCaseError } from '../util/typescript'
 import { TextCursorPosition } from './cursorPositionTypes'
+import { Selection } from './selectionTypes'
+import { transformPasted } from './transformPasted'
 import { getWangxDocExtensions } from './WangxDocExtensions'
 import { WangxDocSchema } from './WangxDocSchema'
 import { WangxDocTipTapEditor, WangxDocTipTapEditorOptions } from './WangxDocTipTapEditor'
-import { Selection } from './selectionTypes'
-import { transformPasted } from './transformPasted'
 
 export type WangxDocEditorOptions<BSchema extends BlockSchema, ISchema extends InlineContentSchema, SSchema extends StyleSchema> = {
     /**

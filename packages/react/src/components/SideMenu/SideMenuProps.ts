@@ -9,10 +9,10 @@ import {
     DefaultInlineContentSchema,
     DefaultStyleSchema,
     InlineContentSchema,
-    WangxDocEditor,
     SideMenuState,
     StyleSchema,
     UiElementPosition,
+    WangxDocEditor,
 } from '@wangx-doc/core'
 import { FC } from 'react'
 

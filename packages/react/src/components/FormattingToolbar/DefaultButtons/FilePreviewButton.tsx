@@ -14,8 +14,8 @@ import { useCallback, useMemo } from 'react'
 import { RiImageAddFill } from 'react-icons/ri'
 
 import { useComponentsContext } from '../../../editor/ComponentsContext'
-import { useWangxDocEditor } from '../../../hooks/useWangxDocEditor'
 import { useSelectedBlocks } from '../../../hooks/useSelectedBlocks'
+import { useWangxDocEditor } from '../../../hooks/useWangxDocEditor'
 import { useDictionary } from '../../../i18n/dictionary'
 
 export const FilePreviewButton = () => {

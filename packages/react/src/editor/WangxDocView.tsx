@@ -5,7 +5,7 @@
  */
 import './styles.css'
 
-import { BlockSchema, InlineContentSchema, mergeCSSClasses, WangxDocEditor, StyleSchema } from '@wangx-doc/core'
+import { BlockSchema, InlineContentSchema, mergeCSSClasses, StyleSchema, WangxDocEditor } from '@wangx-doc/core'
 import React, { ComponentProps, HTMLAttributes, ReactNode, Ref, useCallback, useEffect, useMemo, useState } from 'react'
 
 import { useEditorChange } from '../hooks/useEditorChange'
@@ -13,7 +13,7 @@ import { useEditorSelectionChange } from '../hooks/useEditorSelectionChange'
 import { usePrefersColorScheme } from '../hooks/usePrefersColorScheme'
 import { EditorContent } from './EditorContent'
 import { ElementRenderer } from './ElementRenderer'
-import { WangxDocContext, useWangxDocContext } from './WangxDocContext'
+import { useWangxDocContext, WangxDocContext } from './WangxDocContext'
 import { WangxDocDefaultUI, WangxDocDefaultUIProps } from './WangxDocDefaultUI'
 
 const emptyFn = () => {

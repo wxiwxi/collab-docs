@@ -3,19 +3,13 @@
  *   All rights reserved.
  *   个人练习项目，作者@wxiwxi，供学习参考。
  */
-import {
-    BlockSchema,
-    checkBlockIsFileBlock,
-    checkBlockIsFileBlockWithPlaceholder,
-    InlineContentSchema,
-    StyleSchema,
-} from '@wangx-doc/core'
+import { BlockSchema, checkBlockIsFileBlock, checkBlockIsFileBlockWithPlaceholder, InlineContentSchema, StyleSchema } from '@wangx-doc/core'
 import { useCallback, useMemo } from 'react'
 import { RiDeleteBin7Line } from 'react-icons/ri'
 
 import { useComponentsContext } from '../../../editor/ComponentsContext'
-import { useWangxDocEditor } from '../../../hooks/useWangxDocEditor'
 import { useSelectedBlocks } from '../../../hooks/useSelectedBlocks'
+import { useWangxDocEditor } from '../../../hooks/useWangxDocEditor'
 import { useDictionary } from '../../../i18n/dictionary'
 
 export const FileDeleteButton = () => {

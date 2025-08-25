@@ -6,8 +6,8 @@
 import './App.css'
 import '@wangx-doc/shadcn/style.css'
 
-import { Toaster } from '@wangx-doc/shadcn-shared-ui/components/ui/toaster'
 import { QueryClientProvider } from '@tanstack/react-query'
+import { Toaster } from '@wangx-doc/shadcn-shared-ui/components/ui/toaster'
 import { setDefaultOptions } from 'date-fns'
 import { zhCN } from 'date-fns/locale'
 import { RouterProvider } from 'react-router-dom'

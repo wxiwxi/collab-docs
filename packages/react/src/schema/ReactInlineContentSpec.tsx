@@ -3,6 +3,7 @@
  *   All rights reserved.
  *   个人练习项目，作者@wxiwxi，供学习参考。
  */
+import { NodeViewContent, NodeViewProps, NodeViewWrapper, ReactNodeViewRenderer } from '@tiptap/react'
 import {
     addInlineContentAttributes,
     addInlineContentKeyboardShortcuts,
@@ -20,7 +21,6 @@ import {
     propsToAttributes,
     StyleSchema,
 } from '@wangx-doc/core'
-import { NodeViewContent, NodeViewProps, NodeViewWrapper, ReactNodeViewRenderer } from '@tiptap/react'
 // import { useReactNodeView } from "@tiptap/react/dist/packages/react/src/useReactNodeView";
 import { FC } from 'react'
 

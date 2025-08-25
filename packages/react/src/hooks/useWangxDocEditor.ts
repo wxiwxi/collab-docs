@@ -9,9 +9,9 @@ import {
     DefaultInlineContentSchema,
     DefaultStyleSchema,
     InlineContentSchema,
+    StyleSchema,
     WangxDocEditor,
     WangxDocSchema,
-    StyleSchema,
 } from '@wangx-doc/core'
 
 import { useWangxDocContext } from '../editor/WangxDocContext'

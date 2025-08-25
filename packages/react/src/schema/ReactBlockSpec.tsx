@@ -3,6 +3,7 @@
  *   All rights reserved.
  *   个人练习项目，作者@wxiwxi，供学习参考。
  */
+import { NodeView, NodeViewContent, NodeViewProps, NodeViewWrapper, ReactNodeViewRenderer } from '@tiptap/react'
 import {
     applyNonSelectableBlockFix,
     BlockFromConfig,
@@ -16,15 +17,14 @@ import {
     inheritedProps,
     InlineContentSchema,
     mergeCSSClasses,
-    WangxDocEditor,
     PartialBlockFromConfig,
     Props,
     PropSchema,
     propsToAttributes,
     StyleSchema,
+    WangxDocEditor,
     wrapInBlockStructure,
 } from '@wangx-doc/core'
-import { NodeView, NodeViewContent, NodeViewProps, NodeViewWrapper, ReactNodeViewRenderer } from '@tiptap/react'
 import { FC, ReactNode } from 'react'
 
 import { renderToDOMSpec } from './@util/ReactRenderUtil'

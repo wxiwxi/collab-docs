@@ -3,7 +3,7 @@
  *   All rights reserved.
  *   个人练习项目，作者@wxiwxi，供学习参考。
  */
-import { WangxDocEditor, StyleSchema } from '@wangx-doc/core'
+import { StyleSchema, WangxDocEditor } from '@wangx-doc/core'
 import { useState } from 'react'
 
 import { useWangxDocContext } from '../editor/WangxDocContext'

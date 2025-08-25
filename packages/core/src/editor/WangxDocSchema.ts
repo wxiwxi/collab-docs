@@ -62,9 +62,7 @@ export class WangxDocSchema<BSchema extends BlockSchema, ISchema extends InlineC
          */
         styleSpecs?: SSpecs
     }) {
-        return new WangxDocSchema<BlockSchemaFromSpecs<BSpecs>, InlineContentSchemaFromSpecs<ISpecs>, StyleSchemaFromSpecs<SSpecs>>(
-            options
-        )
+        return new WangxDocSchema<BlockSchemaFromSpecs<BSpecs>, InlineContentSchemaFromSpecs<ISpecs>, StyleSchemaFromSpecs<SSpecs>>(options)
         // as WangxDocSchema<
         // BlockSchemaFromSpecs<BSpecs>,
         // InlineContentSchemaFromSpecs<ISpecs>,

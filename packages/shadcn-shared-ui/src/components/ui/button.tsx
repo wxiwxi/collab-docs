@@ -3,8 +3,8 @@
  *   All rights reserved.
  *   个人练习项目，作者@wxiwxi，供学习参考。
  */
-import { cn } from '@wangx-doc/shadcn-shared-ui/lib/utils'
 import { Slot } from '@radix-ui/react-slot'
+import { cn } from '@wangx-doc/shadcn-shared-ui/lib/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 

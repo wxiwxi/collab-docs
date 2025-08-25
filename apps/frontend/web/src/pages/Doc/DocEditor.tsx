@@ -5,19 +5,19 @@
  */
 import '@wangx-doc/shadcn/style.css'
 
+import { useQuery } from '@tanstack/react-query'
 import {
     defaultBlockSpecs,
     defaultInlineContentSpecs,
     filterSuggestionItems,
     insertOrUpdateBlock,
     locales,
+    PartialBlock,
     WangxDocEditor,
     WangxDocSchema,
-    PartialBlock,
 } from '@wangx-doc/core'
 import { DefaultReactSuggestionItem, getDefaultReactSlashMenuItems, SuggestionMenuController, useCreateWangxDoc } from '@wangx-doc/react'
 import { WangxDocView } from '@wangx-doc/shadcn'
-import { useQuery } from '@tanstack/react-query'
 import { Sparkles } from 'lucide-react'
 import PubSub from 'pubsub-js'
 import { useEffect, useMemo } from 'react'

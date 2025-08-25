@@ -8,9 +8,9 @@ import {
     DefaultInlineContentSchema,
     DefaultStyleSchema,
     InlineContentSchema,
-    WangxDocEditor,
     StyleSchema,
     TableHandlesState,
+    WangxDocEditor,
 } from '@wangx-doc/core'
 
 export type ExtendButtonProps<I extends InlineContentSchema = DefaultInlineContentSchema, S extends StyleSchema = DefaultStyleSchema> = {

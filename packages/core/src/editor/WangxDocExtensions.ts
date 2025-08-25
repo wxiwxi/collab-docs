@@ -29,9 +29,9 @@ import {
     BlockSpecs,
     InlineContentSchema,
     InlineContentSpecs,
-    WangxDocDOMAttributes,
     StyleSchema,
     StyleSpecs,
+    WangxDocDOMAttributes,
 } from '../schema/index'
 import type { WangxDocEditor } from './WangxDocEditor'
 

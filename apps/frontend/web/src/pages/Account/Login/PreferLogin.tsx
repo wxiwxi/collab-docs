@@ -8,7 +8,7 @@ import { Button } from '@wangx-doc/shadcn-shared-ui/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel } from '@wangx-doc/shadcn-shared-ui/components/ui/form'
 import { Input } from '@wangx-doc/shadcn-shared-ui/components/ui/input'
 import { useToast } from '@wangx-doc/shadcn-shared-ui/hooks/use-toast'
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
@@ -43,7 +43,7 @@ const DynamicBackground = () => {
         // 创建粒子
         const createParticles = () => {
             const colors = ['#4a66f1', '#f14a66', '#66f14a', '#f1c84a']
-            
+
             for (let i = 0; i < 100; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
@@ -52,7 +52,7 @@ const DynamicBackground = () => {
                     color: colors[Math.floor(Math.random() * colors.length)],
                     speedX: Math.random() * 0.5 - 0.25,
                     speedY: Math.random() * 0.5 - 0.25,
-                    alpha: Math.random() * 0.5 + 0.1
+                    alpha: Math.random() * 0.5 + 0.1,
                 })
             }
         }
@@ -60,17 +60,17 @@ const DynamicBackground = () => {
         // 绘制粒子
         const drawParticles = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height)
-            
+
             // 绘制背景渐变
             const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height)
             gradient.addColorStop(0, '#000011')
             gradient.addColorStop(1, '#050520')
             ctx.fillStyle = gradient
             ctx.fillRect(0, 0, canvas.width, canvas.height)
-            
+
             // 绘制光线
             drawLightLines()
-            
+
             // 绘制粒子
             particles.forEach((particle, index) => {
                 ctx.beginPath()
@@ -78,11 +78,11 @@ const DynamicBackground = () => {
                 ctx.globalAlpha = particle.alpha
                 ctx.fillStyle = particle.color
                 ctx.fill()
-                
+
                 // 更新位置
                 particle.x += particle.speedX
                 particle.y += particle.speedY
-                
+
                 // 粒子离开画布时重置
                 if (particle.x < 0 || particle.x > canvas.width || particle.y < 0 || particle.y > canvas.height) {
                     particles[index] = {
@@ -92,42 +92,42 @@ const DynamicBackground = () => {
                         color: particle.color,
                         speedX: Math.random() * 0.5 - 0.25,
                         speedY: Math.random() * 0.5 - 0.25,
-                        alpha: Math.random() * 0.5 + 0.1
+                        alpha: Math.random() * 0.5 + 0.1,
                     }
                 }
             })
-            
+
             requestAnimationFrame(drawParticles)
         }
-        
+
         // 绘制光线
         const drawLightLines = () => {
             const time = Date.now() * 0.0005
-            
+
             // 绘制蓝色光线
             ctx.beginPath()
             ctx.moveTo(0, canvas.height * 0.8)
             ctx.bezierCurveTo(
-                canvas.width * 0.2, 
+                canvas.width * 0.2,
                 canvas.height * (0.8 + Math.sin(time) * 0.05),
-                canvas.width * 0.8, 
+                canvas.width * 0.8,
                 canvas.height * (0.8 + Math.sin(time + 1) * 0.05),
-                canvas.width, 
+                canvas.width,
                 canvas.height * 0.7
             )
             ctx.lineWidth = 2
             ctx.strokeStyle = 'rgba(66, 133, 244, 0.3)'
             ctx.stroke()
-            
+
             // 绘制红色光线
             ctx.beginPath()
             ctx.moveTo(0, canvas.height * 0.75)
             ctx.bezierCurveTo(
-                canvas.width * 0.3, 
+                canvas.width * 0.3,
                 canvas.height * (0.75 + Math.cos(time) * 0.03),
-                canvas.width * 0.7, 
+                canvas.width * 0.7,
                 canvas.height * (0.75 + Math.cos(time + 2) * 0.03),
-                canvas.width, 
+                canvas.width,
                 canvas.height * 0.65
             )
             ctx.lineWidth = 1.5
@@ -220,7 +220,7 @@ export function PreferLogin() {
     return (
         <div className="relative h-screen w-screen overflow-hidden bg-black">
             <DynamicBackground />
-            
+
             {/* 内容容器 */}
             <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
                 <div className="w-[420px] max-w-full relative">
@@ -228,7 +228,7 @@ export function PreferLogin() {
                     <div className="rounded-3xl backdrop-blur-lg backdrop-saturate-150 backdrop-filter bg-white/5 border border-white/10 shadow-xl p-6 sm:p-8 text-white before:absolute before:inset-0 before:z-[-1] before:bg-gradient-to-r before:from-white/5 before:to-transparent before:rounded-3xl">
                         {/* 切换按钮 */}
                         <div className="flex rounded-2xl bg-black/20 backdrop-blur-md p-1 mb-4 sm:mb-6 border border-white/10">
-                            <button 
+                            <button
                                 className={`flex-1 py-1.5 sm:py-2 text-sm font-medium rounded-xl transition-all ${!isSignUp ? 'bg-gradient-to-r from-blue-500/80 to-indigo-600/80 shadow-md' : 'hover:bg-white/10'}`}
                                 onClick={() => {
                                     if (isSignUp) toggleSignMode()
@@ -236,7 +236,7 @@ export function PreferLogin() {
                             >
                                 登录
                             </button>
-                            <button 
+                            <button
                                 className={`flex-1 py-1.5 sm:py-2 text-sm font-medium rounded-xl transition-all ${isSignUp ? 'bg-gradient-to-r from-blue-500/80 to-indigo-600/80 shadow-md' : 'hover:bg-white/10'}`}
                                 onClick={() => {
                                     if (!isSignUp) toggleSignMode()
@@ -245,11 +245,11 @@ export function PreferLogin() {
                                 注册
                             </button>
                         </div>
-                        
+
                         <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center text-white">
                             {isSignUp ? '创建新账户' : '欢迎回来'}
                         </h2>
-                        
+
                         <Form {...form}>
                             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-3 sm:space-y-4">
                                 <FormField
@@ -260,9 +260,9 @@ export function PreferLogin() {
                                         <FormItem>
                                             <FormLabel className="text-white/90 text-sm sm:text-base">用户名</FormLabel>
                                             <FormControl>
-                                                <Input 
-                                                    {...field} 
-                                                    placeholder="请输入用户名" 
+                                                <Input
+                                                    {...field}
+                                                    placeholder="请输入用户名"
                                                     className="h-9 sm:h-10 bg-white/5 border-white/20 text-white placeholder:text-white/50 focus:border-blue-400 backdrop-blur-sm rounded-xl"
                                                 />
                                             </FormControl>
@@ -277,10 +277,10 @@ export function PreferLogin() {
                                         <FormItem>
                                             <FormLabel className="text-white/90 text-sm sm:text-base">密码</FormLabel>
                                             <FormControl>
-                                                <Input 
-                                                    {...field} 
-                                                    type="password" 
-                                                    placeholder="请输入密码" 
+                                                <Input
+                                                    {...field}
+                                                    type="password"
+                                                    placeholder="请输入密码"
                                                     className="h-9 sm:h-10 bg-white/5 border-white/20 text-white placeholder:text-white/50 focus:border-blue-400 backdrop-blur-sm rounded-xl"
                                                 />
                                             </FormControl>
@@ -288,15 +288,15 @@ export function PreferLogin() {
                                     )}
                                 />
 
-                                <Button 
-                                    type="submit" 
+                                <Button
+                                    type="submit"
                                     className="w-full h-9 sm:h-10 mt-4 sm:mt-6 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transition-all border-0 backdrop-blur-sm backdrop-filter shadow-lg relative overflow-hidden before:absolute before:inset-0 before:bg-white/10 before:z-[-1] before:opacity-0 hover:before:opacity-20 before:transition-opacity rounded-xl"
                                 >
                                     {inputType === 'login' ? '登录' : '注册'}
                                 </Button>
                             </form>
                         </Form>
-                        
+
                         <div className="mt-4 sm:mt-6 text-center text-xs sm:text-sm text-white/70">
                             {!isSignUp ? (
                                 <>
@@ -322,12 +322,10 @@ export function PreferLogin() {
                                 </>
                             )}
                         </div>
-                        
-                        <div className="mt-4 sm:mt-8 text-xs text-center text-white/50">
-                            继续即表示您同意我们的服务条款和隐私政策
-                        </div>
+
+                        <div className="mt-4 sm:mt-8 text-xs text-center text-white/50">继续即表示您同意我们的服务条款和隐私政策</div>
                     </div>
-                    
+
                     {/* Logo和标题 */}
                     <div className="absolute -top-16 sm:-top-20 left-0 right-0 text-center">
                         <div className="inline-flex items-center text-xl sm:text-2xl font-bold text-white">

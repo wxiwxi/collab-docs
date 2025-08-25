@@ -6,8 +6,8 @@
 
 import '@xyflow/react/dist/style.css'
 
-import { SidebarInset, SidebarTrigger } from '@wangx-doc/shadcn-shared-ui/components/ui/sidebar'
 import { useQuery } from '@tanstack/react-query'
+import { SidebarInset, SidebarTrigger } from '@wangx-doc/shadcn-shared-ui/components/ui/sidebar'
 import { applyEdgeChanges, applyNodeChanges, Background, Controls, Edge, EdgeChange, Node, NodeChange, ReactFlow } from '@xyflow/react'
 import * as d3 from 'd3-force'
 import { Loader } from 'lucide-react'

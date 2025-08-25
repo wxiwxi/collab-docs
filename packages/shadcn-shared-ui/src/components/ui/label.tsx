@@ -1,7 +1,7 @@
 'use client'
 
-import { cn } from '@wangx-doc/shadcn-shared-ui/lib/utils'
 import * as LabelPrimitive from '@radix-ui/react-label'
+import { cn } from '@wangx-doc/shadcn-shared-ui/lib/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 

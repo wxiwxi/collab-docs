@@ -5,8 +5,8 @@
  */
 'use client'
 
-import { cn } from '@wangx-doc/shadcn-shared-ui/lib/utils'
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
+import { cn } from '@wangx-doc/shadcn-shared-ui/lib/utils'
 import * as React from 'react'
 
 const TooltipProvider = TooltipPrimitive.Provider

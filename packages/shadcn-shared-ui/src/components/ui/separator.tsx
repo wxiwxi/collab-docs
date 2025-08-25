@@ -5,8 +5,8 @@
  */
 'use client'
 
-import { cn } from '@wangx-doc/shadcn-shared-ui/lib/utils'
 import * as SeparatorPrimitive from '@radix-ui/react-separator'
+import { cn } from '@wangx-doc/shadcn-shared-ui/lib/utils'
 import * as React from 'react'
 
 const Separator = React.forwardRef<

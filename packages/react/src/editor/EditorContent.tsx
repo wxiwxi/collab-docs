@@ -3,8 +3,8 @@
  *   All rights reserved.
  *   个人练习项目，作者@wxiwxi，供学习参考。
  */
-import { WangxDocEditor } from '@wangx-doc/core'
 import { ReactRenderer } from '@tiptap/react'
+import { WangxDocEditor } from '@wangx-doc/core'
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 

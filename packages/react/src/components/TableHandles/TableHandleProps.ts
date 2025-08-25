@@ -8,9 +8,9 @@ import {
     DefaultInlineContentSchema,
     DefaultStyleSchema,
     InlineContentSchema,
-    WangxDocEditor,
     StyleSchema,
     TableHandlesState,
+    WangxDocEditor,
 } from '@wangx-doc/core'
 import { DragEvent, FC } from 'react'
 

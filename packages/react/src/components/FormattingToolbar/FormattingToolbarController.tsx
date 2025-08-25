@@ -8,9 +8,9 @@ import { BlockSchema, DefaultProps, InlineContentSchema, StyleSchema } from '@wa
 import { FC, useMemo, useRef, useState } from 'react'
 
 import { useEditorContentOrSelectionChange } from '../../hooks/useEditorContentOrSelectionChange'
-import { useWangxDocEditor } from '../../hooks/useWangxDocEditor'
 import { useUIElementPositioning } from '../../hooks/useUIElementPositioning'
 import { useUIPluginState } from '../../hooks/useUIPluginState'
+import { useWangxDocEditor } from '../../hooks/useWangxDocEditor'
 import { mergeRefs } from '../../util/mergeRefs'
 import { FormattingToolbar } from './FormattingToolbar'
 import { FormattingToolbarProps } from './FormattingToolbarProps'

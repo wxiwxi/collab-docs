@@ -9,9 +9,9 @@ import {
     DefaultInlineContentSchema,
     DefaultStyleSchema,
     InlineContentSchema,
+    StyleSchema,
     WangxDocEditor,
     WangxDocEditorOptions,
-    StyleSchema,
 } from '@wangx-doc/core'
 import { DependencyList, useMemo } from 'react'
 

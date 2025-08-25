@@ -14,9 +14,9 @@ import {
 } from '@wangx-doc/core'
 import { FC } from 'react'
 
-import { useWangxDocEditor } from '../../hooks/useWangxDocEditor'
 import { useUIElementPositioning } from '../../hooks/useUIElementPositioning'
 import { useUIPluginState } from '../../hooks/useUIPluginState'
+import { useWangxDocEditor } from '../../hooks/useWangxDocEditor'
 import { LinkToolbar } from './LinkToolbar'
 import { LinkToolbarProps } from './LinkToolbarProps'
 

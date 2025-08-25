@@ -13,9 +13,9 @@ import {
 } from '@wangx-doc/core'
 import { FC } from 'react'
 
-import { useWangxDocEditor } from '../../hooks/useWangxDocEditor'
 import { useUIElementPositioning } from '../../hooks/useUIElementPositioning'
 import { useUIPluginState } from '../../hooks/useUIPluginState'
+import { useWangxDocEditor } from '../../hooks/useWangxDocEditor'
 import { SideMenu } from './SideMenu'
 import { SideMenuProps } from './SideMenuProps'
 

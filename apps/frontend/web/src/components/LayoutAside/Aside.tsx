@@ -4,6 +4,7 @@
  *   个人练习项目，作者@wxiwxi，供学习参考。
  */
 
+import { useQuery } from '@tanstack/react-query'
 import { Avatar, AvatarFallback, AvatarImage } from '@wangx-doc/shadcn-shared-ui/components/ui/avatar'
 import { Button } from '@wangx-doc/shadcn-shared-ui/components/ui/button'
 import { Collapsible } from '@wangx-doc/shadcn-shared-ui/components/ui/collapsible'
@@ -30,7 +31,6 @@ import {
 } from '@wangx-doc/shadcn-shared-ui/components/ui/sidebar'
 import { useToast } from '@wangx-doc/shadcn-shared-ui/hooks/use-toast'
 import { cn } from '@wangx-doc/shadcn-shared-ui/lib/utils'
-import { useQuery } from '@tanstack/react-query'
 import {
     ArrowUpRight,
     FileStack,
@@ -108,15 +108,11 @@ export function Aside() {
         navigate(`/account/login?redirect=${window.location.pathname}`)
     }
     return (
-      <Sidebar variant="inset">
+        <Sidebar variant="inset">
             <SidebarHeader>
                 <div className="flex h-14 items-center px-4 lg:h-[60px] lg:px-2">
-                    <a 
-                        href="/" 
-                        className="flex items-center gap-2 relative" 
-                        title="协同文档"
-                    >
-              <img className="w-8 shrink-0" src="/collaborative-editor-icon.png" alt="Logo" />
+                    <a href="/" className="flex items-center gap-2 relative" title="协同文档">
+                        <img className="w-8 shrink-0" src="/collaborative-editor-icon.png" alt="Logo" />
                         <p className="min-w-24 overflow-hidden font-semibold text-lg group-data-[collapsible=icon]:absolute group-data-[collapsible=icon]:opacity-0 group-data-[collapsible=icon]:pointer-events-none">
                             协同文档
                         </p>
@@ -267,13 +263,13 @@ export function Aside() {
                     <SidebarMenuItem>
                         <SidebarMenuButton>
                             <Settings />
-                            <p className='min-w-0 overflow-hidden group-data-[collapsible=icon]:opacity-0' >设置</p>
+                            <p className="min-w-0 overflow-hidden group-data-[collapsible=icon]:opacity-0">设置</p>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
                         <SidebarMenuButton>
                             <MessageCircleQuestion />
-                            <p className='min-w-0 overflow-hidden group-data-[collapsible=icon]:opacity-0' >关于</p>
+                            <p className="min-w-0 overflow-hidden group-data-[collapsible=icon]:opacity-0">关于</p>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
                     <SidebarMenuItem>

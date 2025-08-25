@@ -11,9 +11,9 @@ import {
     defaultInlineContentSpecs,
     filterSuggestionItems,
     locales,
+    PartialBlock,
     WangxDocEditor,
     WangxDocSchema,
-    PartialBlock,
 } from '@wangx-doc/core'
 import { DefaultReactSuggestionItem, SuggestionMenuController, useCreateWangxDoc } from '@wangx-doc/react'
 import { WangxDocView } from '@wangx-doc/shadcn'

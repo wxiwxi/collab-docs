@@ -3,13 +3,13 @@
  *   All rights reserved.
  *   个人练习项目，作者@wxiwxi，供学习参考。
  */
-import { BlockSchema, InlineContentSchema, WangxDocEditor, StyleSchema } from '@wangx-doc/core'
+import { BlockSchema, InlineContentSchema, StyleSchema, WangxDocEditor } from '@wangx-doc/core'
 import { useCallback, useMemo, useState } from 'react'
 
 import { useComponentsContext } from '../../../editor/ComponentsContext'
 import { useEditorContentOrSelectionChange } from '../../../hooks/useEditorContentOrSelectionChange'
-import { useWangxDocEditor } from '../../../hooks/useWangxDocEditor'
 import { useSelectedBlocks } from '../../../hooks/useSelectedBlocks'
+import { useWangxDocEditor } from '../../../hooks/useWangxDocEditor'
 import { useDictionary } from '../../../i18n/dictionary'
 import { ColorIcon } from '../../ColorPicker/ColorIcon'
 import { ColorPicker } from '../../ColorPicker/ColorPicker'
