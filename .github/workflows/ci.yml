@@ -39,7 +39,13 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
 
-    - name: Install dependencies
+    - name: Install dependencies (first pass)
+      run: pnpm install
+      
+    - name: Pre-build packages
+      run: pnpm build
+      
+    - name: Install dependencies (second pass)
       run: pnpm install
       
     - name: Type check
@@ -48,5 +54,5 @@ jobs:
     - name: Lint
       run: pnpm lint
       
-    - name: Build
+    - name: Build (full)
       run: pnpm build
