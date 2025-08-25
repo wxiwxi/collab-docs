@@ -1,0 +1,29 @@
+/*
+ *   Copyright (c) 2025 @wxiwxi
+ *   All rights reserved.
+ *   个人练习项目，作者@wxiwxi，供学习参考。
+ */
+{
+    "compilerOptions": {
+        "alwaysStrict": false,
+        "declaration": true,
+        "declarationMap": true,
+        "downlevelIteration": true,
+        "importHelpers": true,
+        "inlineSources": true,
+        "isolatedModules": true,
+        "lib": ["ESNext"],
+        "moduleResolution": "node",
+        "noErrorTruncation": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "preserveWatchOutput": true,
+        "sourceMap": true,
+        "strict": true,
+        "strictBindCallApply": false,
+        "target": "es2018",
+        "noUncheckedIndexedAccess": true
+    }
+}

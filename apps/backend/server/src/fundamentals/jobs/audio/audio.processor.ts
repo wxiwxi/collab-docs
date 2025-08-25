@@ -1,0 +1,25 @@
+/*
+ *   Copyright (c) 2025 @wxiwxi
+ *   All rights reserved.
+ *   个人练习项目，作者@wxiwxi，供学习参考。
+ */
+import { OnQueueActive, Process, Processor } from '@nestjs/bull'
+import { Logger } from '@nestjs/common'
+import { Job } from 'bull'
+
+@Processor('audio')
+export class AudioProcessor {
+    private readonly logger = new Logger(AudioProcessor.name)
+
+    @OnQueueActive()
+    onActive(job: Job) {
+        this.logger.debug(`Processing job ${job.id} of type ${job.name} with data ${job.data}...`)
+    }
+
+    @Process('transcode')
+    handleTranscode(job: Job) {
+        this.logger.debug('Start transcoding...')
+        this.logger.debug(job.data)
+        this.logger.debug('Transcoding completed')
+    }
+}

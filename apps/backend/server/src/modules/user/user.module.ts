@@ -1,0 +1,19 @@
+/*
+ *   Copyright (c) 2025 @wxiwxi
+ *   All rights reserved.
+ *   个人练习项目，作者@wxiwxi，供学习参考。
+ */
+import { Module } from '@nestjs/common'
+import { TypeOrmModule } from '@nestjs/typeorm'
+
+import { UserEntity } from '../../entities/user.entity'
+import { UserController } from './user.controller'
+import { UserService } from './user.service'
+
+@Module({
+    imports: [TypeOrmModule.forFeature([UserEntity])],
+    controllers: [UserController],
+    providers: [UserService],
+    exports: [UserService],
+})
+export class UserModule {}
