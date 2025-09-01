@@ -15,6 +15,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '@wangx-doc/shadcn-shared-ui/components/ui/dropdown-menu'
+import { Popover, PopoverTrigger } from '@wangx-doc/shadcn-shared-ui/components/ui/popover'
 import {
     Sidebar,
     SidebarContent,
@@ -33,7 +34,9 @@ import { useToast } from '@wangx-doc/shadcn-shared-ui/hooks/use-toast'
 import { cn } from '@wangx-doc/shadcn-shared-ui/lib/utils'
 import {
     ArrowUpRight,
+    Download,
     FileStack,
+    // FileText,
     MessageCircleQuestion,
     MoreHorizontal,
     Plus,
@@ -41,6 +44,7 @@ import {
     Settings,
     StarOff,
     Trash2,
+    // Upload,
     Waypoints,
 } from 'lucide-react'
 import { NavLink, useMatch, useNavigate } from 'react-router-dom'
@@ -93,6 +97,42 @@ export function Aside() {
         refetch()
         if (activeDocParams?.id === pageId) {
             navigate('/doc')
+        }
+    }
+
+    /**
+     * 导出文档为 Markdown
+     * @param _pageId
+     * @param title
+     */
+    const handleExportMarkdown = async (_pageId: string, title: string) => {
+        try {
+            // 这里应该调用具体的导出 API
+            // 暂时使用模拟数据
+            const markdownContent = `# ${title}\n\n这是导出的 Markdown 内容...`
+
+            const blob = new Blob([markdownContent], { type: 'text/markdown;charset=utf-8' })
+            const url = URL.createObjectURL(blob)
+
+            const link = document.createElement('a')
+            link.href = url
+            link.download = `${title}.md`
+            document.body.appendChild(link)
+            link.click()
+            document.body.removeChild(link)
+            URL.revokeObjectURL(url)
+
+            toast({
+                title: '成功',
+                description: 'Markdown 文件导出成功！',
+            })
+        } catch (error: unknown) {
+            console.error('Markdown export error:', error)
+            toast({
+                title: '错误',
+                description: 'Markdown 文件导出失败',
+                variant: 'destructive',
+            })
         }
     }
 
@@ -149,9 +189,25 @@ export function Aside() {
                 <SidebarGroup>
                     <SidebarGroupLabel className="flex flex-row justify-between">
                         <span>所有文档</span>
-                        <SidebarGroupAction onClick={handleCreate}>
-                            <Plus />
-                        </SidebarGroupAction>
+                        <Popover>
+                            <PopoverTrigger asChild>
+                                <SidebarGroupAction>
+                                    <Plus onClick={handleCreate} />
+                                </SidebarGroupAction>
+                            </PopoverTrigger>
+                            {/* <PopoverContent className="w-56 p-2" side="right" align="start">
+                                <div className="grid gap-1">
+                                    <Button
+                                        variant="ghost"
+                                        className="justify-start"
+                                        onClick={handleCreate}
+                                    >
+                                        <FileText className="mr-2 h-4 w-4" />
+                                        新建文档
+                                    </Button>
+                                </div>
+                            </PopoverContent> */}
+                        </Popover>
                     </SidebarGroupLabel>
                     <SidebarMenu>
                         {pages?.map(item => (
@@ -214,6 +270,15 @@ export function Aside() {
                                                     <ArrowUpRight className="text-muted-foreground" />
                                                     <span>新标签打开</span>
                                                 </NavLink>
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem
+                                                onClick={e => {
+                                                    e.preventDefault()
+                                                    handleExportMarkdown(item.pageId, item.title)
+                                                }}
+                                            >
+                                                <Download className="text-muted-foreground" />
+                                                <span>导出为 Markdown</span>
                                             </DropdownMenuItem>
                                             <DropdownMenuSeparator />
                                             <DropdownMenuItem

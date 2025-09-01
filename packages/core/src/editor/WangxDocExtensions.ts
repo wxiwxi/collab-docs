@@ -19,6 +19,7 @@ import { createPasteFromClipboardExtension } from '../api/clipboard/fromClipboar
 import { createCopyToClipboardExtension } from '../api/clipboard/toClipboard/copyExtension'
 import { BackgroundColorExtension } from '../extensions/BackgroundColor/BackgroundColorExtension'
 import { KeyboardShortcutsExtension } from '../extensions/KeyboardShortcuts/KeyboardShortcutsExtension'
+import { MarkdownExtension } from '../extensions/MarkdownPlugin/MarkdownExtension'
 import { TextAlignmentExtension } from '../extensions/TextAlignment/TextAlignmentExtension'
 import { TextColorExtension } from '../extensions/TextColor/TextColorExtension'
 import { TrailingNode } from '../extensions/TrailingNode/TrailingNodeExtension'
@@ -154,6 +155,7 @@ export const getWangxDocExtensions = <BSchema extends BlockSchema, I extends Inl
         createCopyToClipboardExtension(opts.editor),
         createPasteFromClipboardExtension(opts.editor),
         createDropFileExtension(opts.editor),
+        MarkdownExtension,
 
         Dropcursor.configure({ width: 5, color: '#ddeeff' }),
         // This needs to be at the bottom of this list, because Key events (such as enter, when selecting a /command),

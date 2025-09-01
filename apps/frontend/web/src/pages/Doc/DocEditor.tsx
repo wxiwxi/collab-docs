@@ -38,6 +38,8 @@ interface DocEditorProps {
     initialContent?: PartialBlock[]
     doc: Y.Doc
     provider: WebsocketProvider
+    importMarkdown?: string
+    onEditorReady?: (editor: any) => void
 }
 
 const schema = WangxDocSchema.create({
@@ -101,7 +103,7 @@ const insertAI = (editor: typeof schema.WangxDocEditor) => ({
 })
 
 export function DocEditor(props: DocEditorProps) {
-    const { pageId, doc, provider } = props
+    const { pageId, doc, provider, importMarkdown, onEditorReady } = props
 
     const { data: currentUser } = useQuery<User>({
         queryKey: ['currentUser'],
@@ -153,11 +155,33 @@ export function DocEditor(props: DocEditorProps) {
     )
 
     useEffect(() => {
+        // 编辑器就绪时调用回调函数
+        if (editor && onEditorReady) {
+            onEditorReady(editor)
+        }
+    }, [editor, onEditorReady])
+
+    useEffect(() => {
         // 借鉴了 ssr 的实现：https://github.com/TypeCellOS/BlockNote/blob/main/packages/server-util/src/context/ServerBlockNoteEditor.ts
         // const json = yXmlFragmentToProseMirrorFragment(doc.getXmlFragment(`document-store-${pageId}`), editor.pmSchema)
         // // console.log('🚀 ~ useEffect ~ json:', json)
         // console.log('🚀 ~ useEffect ~ json:', editor.document)
     }, [])
+
+    // 处理导入的 Markdown 内容
+    useEffect(() => {
+        const handleImport = async () => {
+            if (importMarkdown && editor) {
+                try {
+                    await editor.importMarkdown(importMarkdown)
+                } catch (error) {
+                    console.error('导入 Markdown 失败:', error)
+                }
+            }
+        }
+
+        handleImport()
+    }, [importMarkdown, editor])
 
     return (
         <WangxDocView editor={editor} theme="light" slashMenu={false}>

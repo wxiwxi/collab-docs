@@ -10,10 +10,11 @@ import { useQuery } from '@tanstack/react-query'
 import { Separator } from '@wangx-doc/shadcn-shared-ui/components/ui/separator'
 import { SidebarInset, SidebarTrigger } from '@wangx-doc/shadcn-shared-ui/components/ui/sidebar'
 import { useEffect, useMemo, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { WebsocketProvider } from 'y-websocket'
 import * as Y from 'yjs'
 
+import { DocumentActions } from '@/components/DocumentActions'
 import { SharePopover } from '@/components/SharePopover'
 import * as srv from '@/services'
 import { debounce } from '@/utils/debounce'
@@ -46,6 +47,8 @@ const provider = new WebsocketProvider(wsUrl, `doc-yjs`, doc, { connect: false }
 
 export const Doc = () => {
     const params = useParams()
+    const location = useLocation()
+    const [currentEditor, setCurrentEditor] = useState<any>(null) // 保存当前编辑器实例
     const { data: page } = useQuery({
         queryKey: ['page', params?.id],
         queryFn: async () => {
@@ -56,6 +59,8 @@ export const Doc = () => {
         },
         enabled: !!params?.id,
     })
+
+    const importMarkdown = location.state?.importMarkdown as string | undefined
     // console.log('🚀 ~ Doc ~ pages:', pages)
     // const page = useMemo(() => {
     //     return pages?.find(page => page.pageId === params.id)
@@ -139,6 +144,7 @@ export const Doc = () => {
                 <div className="flex flex-row items-center gap-4">
                     {remoteUsers && <AvatarList remoteUsers={remoteUsers} />}
                     <SharePopover />
+                    <DocumentActions title={page?.title} editor={currentEditor} />
                 </div>
             </header>
             <div className="w-[60%] mx-auto">
@@ -151,7 +157,16 @@ export const Doc = () => {
                         dangerouslySetInnerHTML={{ __html: page?.title ?? '' }}
                     />
                 </h1>
-                {page?.id && <DocEditor key={page?.id} pageId={page.pageId} doc={doc} provider={provider} />}
+                {page?.id && (
+                    <DocEditor
+                        key={page?.id}
+                        pageId={page.pageId}
+                        doc={doc}
+                        provider={provider}
+                        importMarkdown={importMarkdown}
+                        onEditorReady={setCurrentEditor}
+                    />
+                )}
                 {/* <DocEditorDemo /> */}
             </div>
         </SidebarInset>

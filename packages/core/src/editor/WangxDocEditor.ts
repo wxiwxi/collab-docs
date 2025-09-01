@@ -1020,4 +1020,113 @@ export class WangxDocEditor<
             })
         )
     }
+
+    // Markdown 导入导出相关方法
+
+    /**
+     * 导出当前文档为 Markdown 字符串
+     */
+    public async exportMarkdown(): Promise<string> {
+        try {
+            // 使用 TipTap 扩展的命令
+            const success = this._tiptapEditor.commands.exportMarkdown()
+            if (success && this._tiptapEditor.storage.markdown?.lastExport) {
+                return this._tiptapEditor.storage.markdown.lastExport
+            }
+
+            // 如果 TipTap 扩展不可用，回退到原有实现
+            const { blocksToMarkdown } = await import('../api/exporters/markdown/markdownExporter')
+            const blocks = this.document
+            return blocksToMarkdown(blocks, this.pmSchema, this, { document })
+        } catch (error) {
+            console.error('导出 Markdown 失败:', error)
+            return ''
+        }
+    }
+
+    /**
+     * 从 Markdown 字符串导入内容到编辑器
+     */
+    public async importMarkdown(markdown: string): Promise<void> {
+        try {
+            // 检查编辑器是否已初始化
+            if (!this._tiptapEditor || !this._tiptapEditor.view || !this._tiptapEditor.commands) {
+                throw new Error('编辑器未初始化')
+            }
+
+            // 使用 TipTap 扩展的命令
+            try {
+                const success = this._tiptapEditor.commands.importMarkdown(markdown)
+                if (success) {
+                    return
+                }
+            } catch (tiptapError) {
+                console.warn('TipTap Markdown 导入失败，回退到原有实现:', tiptapError)
+            }
+
+            // 如果 TipTap 扩展不可用，回退到原有实现
+            const { markdownToBlocks } = await import('../api/parsers/markdown/parseMarkdown')
+            const blocks = await markdownToBlocks(
+                markdown,
+                this.schema.blockSchema,
+                this.schema.inlineContentSchema,
+                this.schema.styleSchema,
+                this.pmSchema
+            )
+            this.replaceBlocks(this.document, blocks)
+        } catch (error) {
+            console.error('导入 Markdown 失败:', error)
+            throw error
+        }
+    }
+
+    /**
+     * 导出并下载 Markdown 文件
+     */
+    public async downloadMarkdown(filename = 'document.md'): Promise<void> {
+        const markdownContent = await this.exportMarkdown()
+        const blob = new Blob([markdownContent], { type: 'text/markdown;charset=utf-8' })
+        const url = URL.createObjectURL(blob)
+
+        const link = document.createElement('a')
+        link.href = url
+        link.download = filename
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+        URL.revokeObjectURL(url)
+    }
+
+    /**
+     * 从文件选择器导入 Markdown 文件
+     */
+    public async importMarkdownFile(): Promise<void> {
+        return new Promise((resolve, reject) => {
+            const input = document.createElement('input')
+            input.type = 'file'
+            input.accept = '.md,.markdown'
+
+            input.onchange = async event => {
+                const file = (event.target as HTMLInputElement).files?.[0]
+                if (!file) {
+                    reject(new Error('No file selected'))
+                    return
+                }
+
+                try {
+                    const text = await file.text()
+                    await this.importMarkdown(text)
+                    resolve()
+                } catch (error) {
+                    reject(error)
+                }
+            }
+
+            input.oncancel = () => {
+                reject(new Error('File selection cancelled'))
+            }
+
+            input.click()
+        })
+    }
 }
